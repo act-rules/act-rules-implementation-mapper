@@ -1,0 +1,31 @@
+{
+  "name": "act-rules-implementation-mapper",
+  "version": "1.0.0",
+  "description": "Mapper for condensing ACT Rules Implementations to be a consumable data for ACT Rules Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/act-rules/act-rules-implementation-mapper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/act-rules/act-rules-implementation-mapper/issues"
+  },
+  "homepage": "https://github.com/act-rules/act-rules-implementation-mapper#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "commander": "^3.0.2",
+    "flat": "^4.1.0",
+    "fs-writefile-promise": "^3.0.2",
+    "globby": "^10.0.1",
+    "is-url": "^1.2.4",
+    "jsonld": "^1.8.0"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
