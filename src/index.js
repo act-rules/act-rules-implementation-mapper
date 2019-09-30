@@ -1,3 +1,4 @@
+const fs = require('fs')
 const assert = require('assert')
 const program = require('commander')
 const writeFile = require('fs-writefile-promise')
@@ -11,7 +12,7 @@ program
 	.option('-p, --actRulesPkg <actRulesPkg>', 'Root Directory of ACT Rules Repo')
 	.option('-o, --org <org>', 'Organisation, which created the EARL report')
 	.option('-t, --tool <tool>', 'Tool used by EARL report')
-	.option('-r, --report <report>', 'Path to EARL report')
+	.option('-e, --earlReportPath <earlReportPath>', 'Path to EARL report')
 	.option('-t, --testsJsonPath <testsJsonPath>', 'Path to JSON file containing all ACT Rules testcases')
 	.option('-d, --dir <dir>', 'Output directory of generated implementation report')
 	.parse(process.argv)
@@ -30,26 +31,37 @@ init(program)
  * Init
  * @param {Object} program program
  */
-async function init({ org, tool, path, testsJsonPath, dir: outputDir }) {
+async function init({
+	actRulesPkg,
+	org,
+	tool,
+	earlReportPath,
+	testsJsonPath,
+	dir
+}) {
 	/**
 	 * assert `args`
 	 */
-	assert(org, '`Organisation` is required')
+	assert(actRulesPkg, '`actRulesPkg` is required')
+	assert(org, '`org` is required')
 	assert(tool, '`tool` is required')
-	assert(path, '`path` is required')
+	assert(earlReportPath, '`report` is required')
+	assert(testsJsonPath, '`testsJsonPath` is required')
+	assert(dir, '`dir` is required')
 
 	console.info(`\nGet implementation of ${tool} by ${org}\n`)
 
 	/**
 	 * fetch `report` & `frame` as required
 	 */
-	const framedReport = await getFramedReport(path)
+	const framedReport = await getFramedReport(earlReportPath)
 
 	/**
 	 * Get `implementation`
 	 */
-	const testcases = fs.readFileSync(testsJsonPath, { encoding: 'utf-8' })
-	const data = await getImplementationForReport(framedReport, testcases)
+	const actRulesPkgJson = JSON.parse(fs.readFileSync(actRulesPkg, { encoding: 'utf-8' }))
+	const { testcases } = JSON.parse(fs.readFileSync(testsJsonPath, { encoding: 'utf-8' }))
+	const data = await getImplementationForReport(framedReport, testcases, actRulesPkgJson)
 
 	/**
 	 * create report
@@ -68,5 +80,5 @@ async function init({ org, tool, path, testsJsonPath, dir: outputDir }) {
 		.join('-')
 		.toLowerCase()
 
-	await writeFile(`_data/implementations/${filename}.json`, JSON.stringify(report, null, 2))
+	await writeFile(`${dir}/${filename}.json`, JSON.stringify(report, null, 2))
 }
