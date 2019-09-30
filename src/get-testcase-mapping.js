@@ -1,4 +1,4 @@
-const getAssertionSource = require('./get-assertion-source')
+const getAssertionSource = require("./get-assertion-source");
 
 /**
  * Utility fn to get  title from assertion
@@ -7,18 +7,18 @@ const getAssertionSource = require('./get-assertion-source')
  * @returns {String}
  */
 const getTitleFromAssertion = assertion => {
-	const { test, EMTest } = assertion
-	if (!test) {
-		return EMTest || null
-	}
-	if (typeof test === 'string') {
-		return test
-	}
-	if (test.title) {
-		return test.title
-	}
-	return test['@id'] || ''
-}
+  const { test, EMTest } = assertion;
+  if (!test) {
+    return EMTest || null;
+  }
+  if (typeof test === "string") {
+    return test;
+  }
+  if (test.title) {
+    return test.title;
+  }
+  return test["@id"] || "";
+};
 
 /**
  * Get mapping for a given testcase
@@ -27,12 +27,12 @@ const getTitleFromAssertion = assertion => {
  * @param {Object} tc testcase
  */
 const getTestcaseMapping = (assertion, { expected }) => {
-	return {
-		title: getTitleFromAssertion(assertion),
-		url: getAssertionSource(assertion),
-		expected: expected,
-		actual: assertion.result.outcome.replace('earl:', ''),
-	}
-}
+  return {
+    title: getTitleFromAssertion(assertion),
+    url: getAssertionSource(assertion),
+    expected: expected,
+    actual: assertion.result.outcome.replace("earl:", "")
+  };
+};
 
-module.exports = getTestcaseMapping
+module.exports = getTestcaseMapping;

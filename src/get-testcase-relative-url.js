@@ -4,8 +4,8 @@
  * @param {String} url url
  */
 const getTestcaseRelativeUrl = url => {
-	const index = url.indexOf(`/testcases/`)
-	return url.substring(index)
-}
+  const index = url.indexOf(`/testcases/`);
+  return url.substring(index);
+};
 
-module.exports = getTestcaseRelativeUrl
+module.exports = getTestcaseRelativeUrl;
