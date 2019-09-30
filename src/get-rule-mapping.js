@@ -5,12 +5,12 @@ const getBestMatchingRules = require('./get-best-matching-rules')
 const getTestcaseAssertions = require('./get-testcase-assertions')
 const getTestCaseMapping = require('./get-testcase-mapping')
 
-function getRuleMapping(testcases, assertions) {
+function getRuleMapping(testcases, assertions, actRulesPkgJson) {
 	const ruleData = {}
 
 	testcases.forEach(tc => {
 		const relativeUrl = getTestcaseRelativeUrl(tc.url)
-		const tcAssertions = getTestcaseAssertions(assertions, relativeUrl)
+		const tcAssertions = getTestcaseAssertions(assertions, relativeUrl, actRulesPkgJson)
 
 		// Create a mapping for each assertion
 		tcAssertions.forEach(assertion => {

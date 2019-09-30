@@ -1,8 +1,5 @@
 const flat = require('flat')
 const isUrl = require('is-url')
-const {
-	www: { url: siteUrl },
-} = require('./../../package.json')
 
 /**
  * Given an assertion object
@@ -13,11 +10,14 @@ const {
  * - and verity if values are of type `url` and has `siteUrl`
  * @param {Object} assertion assertion
  */
-const getAssertionSource = assertion => {
+const getAssertionSource = (assertion, actRulesPkgJson) => {
+	const { www: { url: siteUrl } } = actRulesPkgJson
 	const flattenedAssertion = flat(assertion)
-	return Object.values(flattenedAssertion).find(value => {
-		return isUrl(value) && value.includes(siteUrl)
-	})
+
+	return Object.values(flattenedAssertion)
+		.find(value => {
+			return isUrl(value) && value.includes(siteUrl)
+		})
 }
 
 module.exports = getAssertionSource

@@ -7,15 +7,16 @@ const getRuleMapping = require('./get-rule-mapping')
  *
  * @param {Object|Array<Objects>} reports implementation reports
  * @param {Object} testcases ACT Rules testcases
+ * @param {Object} actRulesPkgJson ACT Rules actRulesPkgJson
  */
-const getImplementationForReport = async (reports, testcases) => {
+const getImplementationForReport = async (reports, testcases, actRulesPkgJson) => {
 	const assertions = getAssertions(reports)
 	const testcasesGroupedByRuleId = await getTestcasesGroupedByRule(testcases)
 
 	return Object.keys(testcasesGroupedByRuleId)
 		.map(ruleId => {
 			const ruleTestcases = testcasesGroupedByRuleId[ruleId]
-			const implementation = getRuleMapping(ruleTestcases, assertions)
+			const implementation = getRuleMapping(ruleTestcases, assertions, actRulesPkgJson)
 			return {
 				ruleId,
 				ruleName: ruleTestcases[0].ruleName,
