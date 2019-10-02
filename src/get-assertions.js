@@ -1,24 +1,22 @@
 const getFramedReports = require('./get-framed-reports')
 
-const getAssertions = async earlReports => {
-	if (!earlReports || !earlReports.length) {
+const getAssertions = async jsonReports => {
+	if (!jsonReports || !jsonReports.length) {
 		return []
 	}
 
 	/**
 	 * frame given earl reports to a frame configuration
 	 */
-	const framedReports = await getFramedReports(earlReports)
+	const framedReports = await getFramedReports(jsonReports)
 
 	/**
 	 * Extrapolate `@graph` object from each report
 	 */
-	const result = framedReports.reduce((out, report) => {
+	return framedReports.reduce((out, report) => {
 		out.push(...report[`@graph`])
 		return out
 	}, [])
-
-	return result
 }
 
 module.exports = getAssertions
