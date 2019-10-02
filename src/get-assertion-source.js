@@ -1,5 +1,5 @@
-const flat = require("flat");
-const isUrl = require("is-url");
+const flat = require('flat')
+const isUrl = require('is-url')
 
 /**
  * Given an assertion object
@@ -11,14 +11,14 @@ const isUrl = require("is-url");
  * @param {Object} assertion assertion
  */
 const getAssertionSource = (assertion, actRulesPkgJson) => {
-  const {
-    www: { url: siteUrl }
-  } = actRulesPkgJson;
-  const flattenedAssertion = flat(assertion);
+	const {
+		www: { url: siteUrl },
+	} = actRulesPkgJson
+	const flattenedAssertion = flat(assertion)
 
-  return Object.values(flattenedAssertion).find(value => {
-    return isUrl(value) && value.includes(siteUrl);
-  });
-};
+	return Object.values(flattenedAssertion).find(value => {
+		return isUrl(value) && value.includes(siteUrl)
+	})
+}
 
-module.exports = getAssertionSource;
+module.exports = getAssertionSource
