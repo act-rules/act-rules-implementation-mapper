@@ -1,20 +1,24 @@
-/**
- * Get assertions from framed reports
- *
- * @param {Object|Array<Objects>} framedReports implementation reports
- */
-const getAssertions = framedReports => {
-  if (!framedReports) {
-    throw new Error("argument report is expected");
-  }
-  const reports = Array.isArray(framedReports)
-    ? framedReports
-    : [framedReports];
+const getFramedReports = require('./get-framed-reports')
 
-  return reports.reduce((out, report) => {
-    out.push(...report[`@graph`]);
-    return out;
-  }, []);
-};
+const getAssertions = async earlReports => {
+	if (!earlReports || !earlReports.length) {
+		return []
+	}
 
-module.exports = getAssertions;
+	/**
+	 * frame given earl reports to a frame configuration
+	 */
+	const framedReports = await getFramedReports(earlReports)
+
+	/**
+	 * Extrapolate `@graph` object from each report
+	 */
+	const result = framedReports.reduce((out, report) => {
+		out.push(...report[`@graph`])
+		return out
+	}, [])
+
+	return result
+}
+
+module.exports = getAssertions
