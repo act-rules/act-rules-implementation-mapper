@@ -9,25 +9,22 @@ The module can be consumed by `javascript` or using the `CLI`.
 ### Javascript usage
 
 ```js
-const {
-  actMapGenerator,
-  earlLoader
-} = require("act-rules-implementation-mapper");
+const { actMapGenerator, earlLoader } = require('act-rules-implementation-mapper')
 
 // Unified Earl reports from the various implementations provided by the implementer
-const earlReports = earlLoader(`dir/*.json`);
+const earlReports = earlLoader(`dir/*.json`)
 
 // ACT Rules testcases (eg: see - https://act-rules.github.io/testcases.json)
-const testcases = require("dir/testcases.json");
+const testcases = require('dir/testcases.json')
 
 actMapGenerator(earlReports, testcases, {
-  organisation: `Deque`,
-  tool: `Axe`
+	organisation: `Deque`,
+	tool: `Axe`,
 })
-  .then(mapping => {
-    fs.writeFileSync("axeActMapping.json", JSON.stringify(mapping, null, 2)); //todo: check encoding usage
-  })
-  .catch(e => console.error(e));
+	.then(mapping => {
+		fs.writeFileSync('axeActMapping.json', JSON.stringify(mapping, null, 2)) //todo: check encoding usage
+	})
+	.catch(e => console.error(e))
 ```
 
 ### CLI usage
