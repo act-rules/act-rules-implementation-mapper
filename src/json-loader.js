@@ -1,8 +1,8 @@
-const fs = require("fs");
-const globby = require("globby");
-const assert = require("assert");
-const isUrl = require("is-url");
-const axios = require("axios");
+const fs = require('fs')
+const globby = require('globby')
+const assert = require('assert')
+const isUrl = require('is-url')
+const axios = require('axios')
 
 /**
  * Load json report(s) from given path, url or glob
@@ -11,19 +11,19 @@ const axios = require("axios");
  * @returns {Object[]}
  */
 async function jsonLoader(path) {
-  assert(path, "`path` argument is required.");
+	assert(path, '`path` argument is required.')
 
-  if (isUrl(path)) {
-    const { data } = await axios.get(path);
-    return data;
-  }
+	if (isUrl(path)) {
+		const { data } = await axios.get(path)
+		return data
+	}
 
-  const reports = globby.sync(path).map(reportPath => {
-    const fileContent = fs.readFileSync(reportPath, { encoding: "utf-8" });
-    return JSON.parse(fileContent);
-  });
+	const reports = globby.sync(path).map(reportPath => {
+		const fileContent = fs.readFileSync(reportPath, { encoding: 'utf-8' })
+		return JSON.parse(fileContent)
+	})
 
-  return reports;
+	return reports
 }
 
-module.exports = jsonLoader;
+module.exports = jsonLoader
