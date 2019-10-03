@@ -54,7 +54,7 @@ async function init({ organisation, tool, jsonReports, testcases: actTestcases, 
 	/**
 	 * Load reports
 	 */
-	const reports = await jsonLoader(`./node_modules/act-rules-implementation-alfa/report.json`)
+	const reports = await jsonLoader(jsonReports)
 
 	try {
 		const result = await actMapGenerator(reports, testcases, { organisation, tool })
