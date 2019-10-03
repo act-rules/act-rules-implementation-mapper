@@ -1,7 +1,7 @@
 const jsonLoader = require('../json-loader')
-const getAssertions = require('../get-assertions')
+const getAssertionsFromJsonReports = require('../get-assertions-from-json-reports')
 
-describe(`getAssertions`, () => {
+describe(`getAssertionsFromJsonReports`, () => {
 	let report
 
 	beforeAll(async done => {
@@ -12,7 +12,7 @@ describe(`getAssertions`, () => {
 	})
 
 	it('returns assertions from framed reports', async () => {
-		const assertions = await getAssertions(report)
+		const assertions = await getAssertionsFromJsonReports(report)
 		expect(assertions.length).toBeGreaterThan(0)
 	})
 })

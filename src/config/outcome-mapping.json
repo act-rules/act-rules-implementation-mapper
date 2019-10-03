@@ -1,0 +1,5 @@
+{
+	"failed": ["failed", "cantTell"],
+	"passed": ["passed", "cantTell", "inapplicable"],
+	"inapplicable": ["passed", "cantTell", "inapplicable", "untested"]
+}

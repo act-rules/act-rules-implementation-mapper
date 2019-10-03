@@ -9,20 +9,20 @@ The module can be consumed by `javascript` or using the `CLI`.
 ### Javascript usage
 
 ```js
-const { actMapGenerator, earlLoader } = require('act-rules-implementation-mapper')
+const { actMapGenerator, jsonLoader } = require('act-rules-implementation-mapper')
 
 // Unified Earl reports from the various implementations provided by the implementer
-const earlReports = earlLoader(`dir/*.json`)
+const jsonReports = jsonLoader(`dir/*.json`)
 
 // ACT Rules testcases (eg: see - https://act-rules.github.io/testcases.json)
 const testcases = require('dir/testcases.json')
 
-actMapGenerator(earlReports, testcases, {
+actMapGenerator(jsonReports, testcases, {
 	organisation: `Deque`,
 	tool: `Axe`,
 })
 	.then(mapping => {
-		fs.writeFileSync('axeActMapping.json', JSON.stringify(mapping, null, 2)) //todo: check encoding usage
+		fs.writeFileSync('axeActMapping.json', JSON.stringify(mapping, null, 2))
 	})
 	.catch(e => console.error(e))
 ```
@@ -33,7 +33,7 @@ actMapGenerator(earlReports, testcases, {
 act-map-generator
   --organisation 'Siteimprove' # Name of the organisation
   --tool 'Alfa' # Tool used for mapping
-  --earlReports 'earl-report.json' # JSON LD/ EARL report(s)
+  --jsonReports 'earl-report.json' # JSON LD/ EARL report(s)
   --testcases 'testcases.json' # ACT Rules testcases
   --output 'result' # output directory
 ```

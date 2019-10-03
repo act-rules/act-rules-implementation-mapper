@@ -2,9 +2,12 @@
 	"name": "act-rules-implementation-mapper",
 	"version": "1.0.0",
 	"description": "Mapper for condensing ACT Rules Implementations to be a consumable data for ACT Rules Website",
-	"main": "index.js",
+	"main": "./src/index.js",
+	"bin": {
+		"act-map-generator": "./bin/index.js"
+	},
 	"scripts": {
-		"build": "node ./src/index.js",
+		"eslint": "eslint --color --format stylish '{src,bin}/**/*.js'",
 		"test": "jest --coverage",
 		"format": "prettier --write *.{json,md,js} 'src/**/*.{json,md,js}'"
 	},
@@ -33,6 +36,7 @@
 		"mkdirp-promise": "^5.0.1"
 	},
 	"devDependencies": {
+		"eslint": "^6.5.1",
 		"husky": "^3.0.7",
 		"jest": "^24.9.0",
 		"lint-staged": "^9.4.0",
