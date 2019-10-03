@@ -4,7 +4,10 @@
  * @param {Array<Object>} ruleAsserts mapped assertions
  */
 const getBestMatchingRules = ruleAsserts => {
-	const mappedRules = ruleAsserts.filter(({ mapping }) => mapping !== false)
+	const mappedRules = ruleAsserts.filter(ruleAssert => {
+		const { mapping } = ruleAssert
+		return mapping !== false
+	})
 	if (!mappedRules) {
 		return
 	}
