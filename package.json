@@ -3,8 +3,11 @@
 	"version": "1.0.0",
 	"description": "Mapper for condensing ACT Rules Implementations to be a consumable data for ACT Rules Website",
 	"main": "./src/index.js",
+	"bin": {
+		"act-map-generator": "./bin/index.js"
+	},
 	"scripts": {
-		"build": "node ./src/index.js",
+		"build": "node ./src/cli.js",
 		"test": "jest --coverage",
 		"format": "prettier --write *.{json,md,js} 'src/**/*.{json,md,js}'"
 	},
