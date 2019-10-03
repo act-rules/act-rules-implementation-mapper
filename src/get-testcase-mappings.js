@@ -26,7 +26,9 @@ module.exports = getTestcaseMappings
  */
 function getAssertionSource(assertion, testcaseRelativePath) {
 	const flatAssertion = flat(assertion)
-	const source = Object.values(flatAssertion).find(value => value.includes(testcaseRelativePath))
+	const source = Object.values(flatAssertion)
+		.filter(val => val && typeof val === 'string')
+		.find(value => value.includes(testcaseRelativePath))
 	return source
 }
 

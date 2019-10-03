@@ -1,5 +1,4 @@
 const flat = require('flat')
-const isUrl = require('is-url')
 
 /**
  * Get all assertions for given testcase
@@ -10,7 +9,10 @@ const isUrl = require('is-url')
 function getAssertionsForTestcase(testcase, assertions) {
 	const { relativePath } = testcase
 	return assertions.filter(assertion => {
-		return Object.values(flat(assertion)).some(value => isUrl(value) && value.includes(relativePath))
+		const flatAssertion = flat(assertion)
+		return Object.values(flatAssertion)
+			.filter(val => val && typeof val === 'string')
+			.some(value => value.includes(relativePath))
 	})
 }
 
