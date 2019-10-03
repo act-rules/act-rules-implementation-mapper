@@ -1,6 +1,6 @@
 name: Node CI
 
-# only run on pull requests targetting `master` branch
+# only run on pull requests targeting `master` branch
 on:
   pull_request:
     branches:
