@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require('fs')
+const path = require('path')
 const assert = require('assert')
 const program = require('commander')
 const mkdirp = require('mkdirp-promise')
@@ -53,10 +54,10 @@ async function init({ organisation, tool, jsonReports, testcases: actTestcases, 
 	/**
 	 * Load reports
 	 */
-	const jsonReports = await jsonLoader(`./node_modules/act-rules-implementation-alfa/report.json`)
+	const reports = await jsonLoader(`./node_modules/act-rules-implementation-alfa/report.json`)
 
 	try {
-		const result = await actMapGenerator(jsonReports, testcases, { organisation, tool })
+		const result = await actMapGenerator(reports, testcases, { organisation, tool })
 
 		/**
 		 * Save result

@@ -29,7 +29,7 @@ function getRuleImplementation(ruleTestcases, assertions) {
 	/**
 	 * Push `untested` results for every testcase without an `assertion`
 	 */
-	for (testcase of ruleTestcases) {
+	for (const testcase of ruleTestcases) {
 		const { url, expected } = testcase
 
 		Object.values(ruleData).forEach(ruleTestcaseMappings => {
