@@ -20,7 +20,7 @@ describe(`jsonLoader`, () => {
 		await fs.remove(`${__dirname}/tmp`)
 	})
 
-	it(`throws when no argument is specified`, async () => {
+	test(`throws when no argument is specified`, async () => {
 		const jsonLoader = require('../json-loader')
 		let error
 		try {
@@ -31,25 +31,25 @@ describe(`jsonLoader`, () => {
 		expect(error).to
 	})
 
-	it('returns json data from a given url', async () => {
+	test('returns json data from a given url', async () => {
 		const actual = await jsonLoader(
 			'https://raw.githubusercontent.com/act-rules/act-rules-implementation-alfa/master/report.json'
 		)
 		expect(actual).toBeArray()
 	})
 
-	it('returns json data from a single file path specified', async () => {
+	test('returns json data from a single file path specified', async () => {
 		const actual = await jsonLoader(`${__dirname}/tmp/file1.json`)
 		expect(actual).toEqual([{ organisation: 'Deque' }])
 	})
 
-	it('returns combined json data from multiple file paths specified', async () => {
+	test('returns combined json data from multiple file paths specified', async () => {
 		const actual = await jsonLoader([`${__dirname}/tmp/file1.json`, `${__dirname}/tmp/file2.json`])
 		expect(actual).toBeArrayOfSize(2)
 		expect(actual).toEqual([{ organisation: 'Deque' }, { organisation: 'Siteimprove' }])
 	})
 
-	it('returns combined json data from all files in a glob specified', async () => {
+	test('returns combined json data from all files in a glob specified', async () => {
 		const actual = await jsonLoader(`${__dirname}/tmp/*.json`)
 
 		expect(actual).toBeArrayOfSize(2)

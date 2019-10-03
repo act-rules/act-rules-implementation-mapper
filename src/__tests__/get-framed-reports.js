@@ -11,12 +11,12 @@ describe(`getFramedReports`, () => {
 		done()
 	})
 
-	it('returns empty array when no reports are given as arguments', async () => {
+	test('returns empty array when no reports are given as arguments', async () => {
 		const actual = await getFramedReports()
 		expect(actual).toBeArrayOfSize(0)
 	})
 
-	it('returns framed report from given url', async () => {
+	test('returns framed report from given url', async () => {
 		const framedReport = await getFramedReports(report)
 		expect(framedReport).toBeDefined()
 		expect(Object.keys(framedReport[0])).toEqual(['@context', '@graph'])

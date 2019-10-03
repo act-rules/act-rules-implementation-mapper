@@ -11,7 +11,7 @@ describe(`getAssertionsFromJsonReports`, () => {
 		done()
 	})
 
-	it('returns assertions from framed reports', async () => {
+	test('returns assertions from framed reports', async () => {
 		const assertions = await getAssertionsFromJsonReports(report)
 		expect(assertions.length).toBeGreaterThan(0)
 	})
