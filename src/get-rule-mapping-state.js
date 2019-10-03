@@ -11,7 +11,7 @@ const outcomeMapping = {
 /**
  * Get rule state based on given assertions
  *
- * @param {Array<Object>} assertions
+ * @param {Object[]} assertions
  */
 const getRuleMappingState = assertions => {
 	const mapping = assertions.some(

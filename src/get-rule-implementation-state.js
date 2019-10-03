@@ -1,15 +1,18 @@
 const assert = require('assert')
 const outcomeMapping = require('./config/outcome-mapping')
 
-// todo: jsdocs
+/**
+ * Enhance a implemenation mapping for a given rule with incorrect, complete state
+ * @param {Object} ruleTestcaseMappings mapping
+ * @returns {Object}
+ */
 const getRuleImplementationState = ruleTestcaseMappings => {
-	// @wilco - why?
-	// const mapping = ruleTestcaseMappings.some(({ actual, expected }) => {
-	// 	return expected === 'failed' && outcomeMapping['failed'].includes(actual)
-	// })
-	// if (!mapping) {
-	// 	return { mapping: false }
-	// }
+	const mapping = ruleTestcaseMappings.some(({ actual, expected }) => {
+		return expected === 'failed' && outcomeMapping['failed'].includes(actual)
+	})
+	if (!mapping) {
+		return { mapping: false }
+	}
 
 	const incorrect = ruleTestcaseMappings
 		.filter(({ expected, actual }) => {

@@ -1,6 +1,11 @@
 const flat = require('flat')
 
-// todo: jsdocs
+/**
+ * Get an outcome mapping from an assertion for a given testcase
+ * @param {Object} testcase ACT testcase
+ * @param {Object} assertion assertion
+ * @returns {Object}
+ */
 function getTestcaseMappings(testcase, assertion) {
 	const { expected, relativePath } = testcase
 	return {
@@ -13,14 +18,23 @@ function getTestcaseMappings(testcase, assertion) {
 
 module.exports = getTestcaseMappings
 
-// todo: jsdocs
+/**
+ * Get source of a given assertion
+ * @param {Object} assertion assertion
+ * @param {String} testcaseRelativePath relative path of a given testcase
+ * @returns {String}
+ */
 function getAssertionSource(assertion, testcaseRelativePath) {
 	const flatAssertion = flat(assertion)
 	const source = Object.values(flatAssertion).find(value => value.includes(testcaseRelativePath))
 	return source
 }
 
-// todo:docs
+/**
+ * Get title of a given assertion
+ * @param {Object} assertion assertion
+ * @returns {String|null}
+ */
 function getAssertionTitle(assertion) {
 	const { test, EMTest } = assertion
 	if (!test) {

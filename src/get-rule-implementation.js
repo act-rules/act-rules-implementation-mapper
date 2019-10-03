@@ -1,9 +1,14 @@
 const getAssertionsForTestcase = require('./get-assertions-for-testcase')
 const getTestcaseMappings = require('./get-testcase-mappings')
 const getRuleImplementationState = require('./get-rule-implementation-state')
-// const getBestMatchingRules = require('./get-best-matching-rules')
+const getBestMatchingRules = require('./get-best-matching-rules')
 
-// todo: jsdocs
+/**
+ * Get implementation for a given ACT rule
+ * @param {Object[]} ruleTestcases all testcases of a given ACT rule
+ * @param {Object[]} assertions all assertions from a given report
+ * @returns {Object}
+ */
 function getRuleImplementation(ruleTestcases, assertions) {
 	const ruleData = {}
 
@@ -49,9 +54,11 @@ function getRuleImplementation(ruleTestcases, assertions) {
 		})
 	}
 
-	return Object.values(ruleData).map(ruleTestcaseMappings => getRuleImplementationState(ruleTestcaseMappings))
+	const implementation = Object.values(ruleData).map(ruleTestcaseMappings =>
+		getRuleImplementationState(ruleTestcaseMappings)
+	)
 
-	// return getBestMatchingRules(ruleAsserts)
+	return getBestMatchingRules(implementation)
 }
 
 module.exports = getRuleImplementation
