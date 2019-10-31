@@ -8,6 +8,7 @@
 		"target": "es2017",
 		"noImplicitReturns": true,
 		"esModuleInterop": true,
+		"resolveJsonModule": true,
 		"noFallthroughCasesInSwitch": true,
 		"pretty": true,
 		"strict": true,
@@ -16,5 +17,5 @@
 		"declaration": false,
 		"noImplicitAny": true
 	},
-	"exclude": ["src/**/*.test.ts", "__tests__/**/*.ts"]
+	"exclude": ["src/**/*.test.ts", "__tests__/**/*.ts", "src/__test-utils.ts"]
 }
