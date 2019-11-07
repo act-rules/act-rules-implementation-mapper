@@ -1,12 +1,7 @@
 import * as earlContext from './earl/earl-context.json'
 import { EarlAssertion, EarlOutcome } from './earl/types'
-import {
-  ActualOutcome,
-  ExpectedOutcome,
-  getImplementation,
-  PartialTestcase,
-  Implementation,
-} from './get-implementation'
+import { ActualOutcome, ExpectedOutcome, getImplementation, Implementation } from './get-implementation'
+import { Testcase } from './act-map-generator.js'
 
 export type TestDataTable = {
   expected: ExpectedOutcome[]
@@ -27,7 +22,7 @@ export type TestDataTable = {
  */
 export function testDataFromTables(...args: TestDataTable[]) {
   const assertions: EarlAssertion[] = []
-  const testcases: PartialTestcase[] = []
+  const testcases: Testcase[] = []
   const implementationMaps: ImplementationMap[] = []
 
   args.forEach(arg => {
@@ -54,7 +49,7 @@ function testDataFromTable(argsTable: TestDataTable) {
   const urls = testcaseIds.map(url => toTestcaseUrl(url, ruleId))
 
   const testcaseArgs = expected.map((expected, i): SimpleTestcase => [urls[i], expected, ruleId])
-  const cases: PartialTestcase[] = toTestcases(...testcaseArgs)
+  const cases: Testcase[] = toTestcases(...testcaseArgs)
   const asserts: EarlAssertion[] = []
   const implementationMap: ImplementationMap = {}
 
@@ -97,14 +92,12 @@ type SimpleTestcase = [string, ExpectedOutcome, string?]
 /**
  * Take [testcaseId, expected][] and turn it into { url, expected }[]
  */
-export function toTestcases(...cases: SimpleTestcase[]): PartialTestcase[] {
-  return cases.map(
-    ([testcaseId, expected, ruleId]): PartialTestcase => ({
-      url: toTestcaseUrl(testcaseId),
-      expected,
-      ruleId,
-    })
-  )
+export function toTestcases(...cases: SimpleTestcase[]): Testcase[] {
+  return cases.map(([testcaseId, expected, ruleId]) => ({
+    url: toTestcaseUrl(testcaseId),
+    expected,
+    ruleId,
+  })) as Testcase[]
 }
 
 /**

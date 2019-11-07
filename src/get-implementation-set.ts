@@ -1,12 +1,12 @@
 import debug from 'debug'
 import { EarlAssertion } from './earl/types'
-import { AssertionGroup } from './act-map-generator'
+import { AssertionGroup, Testcase } from './act-map-generator'
 import { implementationIdFromTest } from './utils/get-implementation-id'
-import { getImplementation, PartialTestcase, Implementation, TestFindings, Consistency } from './get-implementation'
+import { getImplementation, Implementation, TestFindings, Consistency } from './get-implementation'
 import { isConsistentImplementationSet } from './utils/is-consistent-implementation-set'
 import { sortImplementations } from './utils/sort-implementations'
 
-export function getImplementationSet(assertions: EarlAssertion[], testcases: PartialTestcase[]) {
+export function getImplementationSet(assertions: EarlAssertion[], testcases: Testcase[]) {
   // Group asserts by implementation ID
   const assertsByImplementationId = assertions.reduce((assertsByRule: AssertionGroup, assertion) => {
     // Normalise around a bug in WCAG-EM
