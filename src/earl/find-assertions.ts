@@ -17,7 +17,7 @@ export async function findAssertions(jsonReports: object | object[]): Promise<Ea
   const framedReports: AssertionGraph[] = []
   for (const report of reports) {
     try {
-      const framedReport = <AssertionGraph>await jsonldFrame(report, assertionFrame)
+      const framedReport = (await jsonldFrame(report, assertionFrame)) as AssertionGraph
       framedReports.push(framedReport)
     } catch (e) {
       debug('findAssertions')(`Unable to frame JSON file. Got error:\n${e}`)

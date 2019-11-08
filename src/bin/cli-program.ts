@@ -19,7 +19,7 @@ type Log = (...str: any[]) => void
 export async function cliProgram(
   { organisation, toolName, jsonReports, testcases, output, toolVersion }: CliArgs,
   log: Log
-) {
+): Promise<void> {
   output = output.replace('{organisation}', organisation || '{organisation}').replace('{tool}', toolName || '{tool}')
   const outputPath = path.resolve(process.cwd(), output)
   const meta = { organisation, toolName, toolVersion }
@@ -38,7 +38,7 @@ export async function cliProgram(
     )
   ).filter(report => report)
 
-  const testcaseFile = <TestCaseJson>await loadJson(testcases)
+  const testcaseFile = (await loadJson(testcases)) as TestCaseJson
 
   log('Loading files')
   const implementationMapping = await actMapGenerator(jsonldFiles, testcaseFile, meta)

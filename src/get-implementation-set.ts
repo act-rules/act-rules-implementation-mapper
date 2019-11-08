@@ -4,9 +4,9 @@ import { implementationIdFromTest } from './utils/get-implementation-id'
 import { getImplementation } from './get-implementation'
 import { isConsistentImplementationSet } from './utils/is-consistent-implementation-set'
 import { sortImplementations } from './utils/sort-implementations'
-import { Implementation, Consistency, Testcase, AssertionGroup } from './types'
+import { Implementation, Consistency, Testcase, AssertionGroup, SemiImplementationSet } from './types'
 
-export function getImplementationSet(assertions: EarlAssertion[], testcases: Testcase[]) {
+export function getImplementationSet(assertions: EarlAssertion[], testcases: Testcase[]): SemiImplementationSet {
   // Group asserts by implementation ID
   const assertsByImplementationId = assertions.reduce((assertsByRule: AssertionGroup, assertion) => {
     // Normalise around a bug in WCAG-EM

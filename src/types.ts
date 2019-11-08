@@ -52,12 +52,15 @@ export type Implementation = SemiImplementation & {
   implementationId: string
 }
 
-export type ImplementationSet = {
-  ruleId: string
-  ruleName: string
+export type SemiImplementationSet = {
   complete: boolean
   consistency: Consistency
   implementations: Implementation[]
+}
+
+export type ImplementationSet = SemiImplementationSet & {
+  ruleId: string
+  ruleName: string
 }
 
 export type AssertionGroup = {

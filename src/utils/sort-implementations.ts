@@ -1,6 +1,6 @@
 import { Implementation, TestFindings } from '../types'
 
-export function sortImplementations(implA: Implementation, implB: Implementation) {
+export function sortImplementations(implA: Implementation, implB: Implementation): number {
   const findingsA = implA.findings
   const findingsB = implB.findings
   // sort by no meaningful results
