@@ -3,51 +3,9 @@ import { findAssertions } from './earl/find-assertions'
 import { getImplementationSet } from './get-implementation-set'
 import { ruleIdFromSubject } from './utils/get-rule-id'
 import { EarlAssertion } from './earl/types'
-import { Consistency, Implementation } from './get-implementation'
+import { ImplementationSet, TestCaseJson, ToolMetadata, AssertionGroup, Consistency } from './types'
 
 export { loadJson } from './load-json'
-
-export type Testcase = {
-  ruleId: string
-  url: string
-  testcaseId: string
-  testcaseTitle: string
-  expected: 'passed' | 'failed' | 'inapplicable'
-  ruleName: string
-  rulePage: string
-  ruleAccessibilityRequirements: {
-    [propName: string]: AccessibilityRequirement
-  }
-}
-
-export type AccessibilityRequirement = {
-  forConformance: boolean
-  failed: 'not satisfied'
-  passed: 'satisfied' | 'further testing needed'
-  inapplicable: 'satisfied' | 'further testing needed'
-}
-
-export type TestCaseJson = {
-  testcases: Testcase[]
-}
-
-export type AssertionGroup = {
-  [propName: string]: EarlAssertion[]
-}
-
-export type ToolMetadata = {
-  organisation?: string
-  toolName?: string
-  toolVersion?: string
-}
-
-export type ImplementationSet = {
-  ruleId: string
-  ruleName: string
-  complete: boolean
-  consistency: Consistency
-  implementations: Implementation[]
-}
 
 export async function actMapGenerator(jsonld: any, { testcases }: TestCaseJson, meta: ToolMetadata = {}) {
   const assertions = await findAssertions(jsonld)

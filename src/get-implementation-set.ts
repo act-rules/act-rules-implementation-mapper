@@ -1,10 +1,10 @@
 import debug from 'debug'
 import { EarlAssertion } from './earl/types'
-import { AssertionGroup, Testcase } from './act-map-generator'
 import { implementationIdFromTest } from './utils/get-implementation-id'
-import { getImplementation, Implementation, TestFindings, Consistency } from './get-implementation'
+import { getImplementation } from './get-implementation'
 import { isConsistentImplementationSet } from './utils/is-consistent-implementation-set'
 import { sortImplementations } from './utils/sort-implementations'
+import { Implementation, Consistency, Testcase, AssertionGroup } from './types'
 
 export function getImplementationSet(assertions: EarlAssertion[], testcases: Testcase[]) {
   // Group asserts by implementation ID

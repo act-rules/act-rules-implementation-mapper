@@ -1,31 +1,13 @@
 import { EarlAssertion } from './earl/types'
-import { Testcase } from './act-map-generator'
 import { sourceFromSubject } from './utils/get-source'
 import debug from 'debug'
+import { Testcase, ExpectedOutcome, ActualOutcome, Consistency, TestFindings, SemiImplementation } from './types'
 
-export type ExpectedOutcome = 'passed' | 'failed' | 'inapplicable'
-export type ActualOutcome = ExpectedOutcome | 'cantTell' | 'untested'
-export type Consistency = 'consistent' | 'partially-consistent' | 'inconsistent'
-
-export type TestFindings = {
-  url: string
-  expected: ExpectedOutcome
-  actual: ActualOutcome
-  correct: boolean
-  testcase?: string
+type OutcomeMapping = {
+  [propName in ExpectedOutcome]: ActualOutcome[]
 }
 
-export type SemiImplementation = {
-  complete: boolean
-  consistency: Consistency
-  findings: TestFindings[]
-}
-
-export type Implementation = SemiImplementation & {
-  implementationId: string
-}
-
-const outcomeMapping = {
+const outcomeMapping: OutcomeMapping = {
   passed: ['passed', 'inapplicable', 'cantTell'],
   inapplicable: ['passed', 'inapplicable', 'cantTell'],
   failed: ['failed', 'cantTell'],

@@ -1,10 +1,11 @@
 import fs from 'fs'
 import path from 'path'
 import { promisify } from 'util'
-import { actMapGenerator, TestCaseJson, ToolMetadata } from '../act-map-generator'
+import { actMapGenerator } from '../act-map-generator'
 import { flatMap } from '../utils/flat-map'
 import { loadJson } from '../load-json'
 import debug from 'debug'
+import { ToolMetadata, TestCaseJson } from '../types'
 
 const writeFile = promisify(fs.writeFile)
 
