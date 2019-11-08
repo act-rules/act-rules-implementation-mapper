@@ -2,11 +2,11 @@ import { EarlAssertion } from './earl/types'
 
 export type SatisfiedRequirement = 'satisfied' | 'further testing needed'
 
-export type UnatisfiedRequirement = 'not satisfied'
+export type UnsatisfiedRequirement = 'not satisfied'
 
 export type AccessibilityRequirement = {
   forConformance: boolean
-  failed: UnatisfiedRequirement
+  failed: UnsatisfiedRequirement
   passed: SatisfiedRequirement
   inapplicable: SatisfiedRequirement
 }
