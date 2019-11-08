@@ -1,4 +1,4 @@
-name: Node CI
+name: test
 
 # only run on pull requests targeting `master` branch
 on:
