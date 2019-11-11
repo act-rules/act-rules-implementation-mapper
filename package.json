@@ -14,11 +14,11 @@
     "build": "tsc",
     "build:live": "nodemon --watch 'src/**/*.ts'",
     "lint": "eslint src/**/*.ts",
-    "lint:fix": "npm run lint --fix",
+    "lint:fix": "npm run lint -- --fix",
     "prettier": "npm run prettier:write",
     "prettier:base": "prettier --parser typescript --single-quote",
-    "prettier:check": "npm run prettier:base --list-different \"src/**/*.ts\"",
-    "prettier:write": "npm run prettier:base --write \"src/**/*.ts\""
+    "prettier:check": "npm run prettier:base -- --list-different \"src/**/*.ts\"",
+    "prettier:write": "npm run prettier:base -- --write \"src/**/*.ts\""
   },
   "repository": {
     "type": "git",
@@ -46,9 +46,11 @@
     "@types/jsonld": "^1.5.0",
     "@types/node": "*",
     "@types/request-promise": "^4.1.44",
-    "@typescript-eslint/eslint-plugin": "^2.3.2",
+    "@typescript-eslint/eslint-plugin": "^2.6.1",
     "@typescript-eslint/parser": "^2.3.2",
     "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-prettier": "^3.1.1",
     "husky": "^3.0.8",
     "jest": "24.0.0",
     "lint-staged": "^9.4.1",
@@ -79,7 +81,9 @@
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",
     "extends": [
-      "plugin:@typescript-eslint/recommended"
+      "plugin:@typescript-eslint/recommended",
+      "prettier/@typescript-eslint",
+      "plugin:prettier/recommended"
     ],
     "parserOptions": {
       "ecmaVersion": 2018,
