@@ -1,7 +1,7 @@
 import * as earlContext from './earl/earl-context.json'
 import { EarlAssertion, EarlOutcome } from './earl/types'
-import { ActualOutcome, ExpectedOutcome, getImplementation, Implementation } from './get-implementation'
-import { Testcase } from './act-map-generator.js'
+import { getImplementation } from './get-implementation'
+import { ExpectedOutcome, Testcase, Implementation, ActualOutcome } from './types.js'
 
 export type TestDataTable = {
   expected: ExpectedOutcome[]
