@@ -56,7 +56,7 @@ const { actMapGenerator, loadJson } = require('act-rules-implementation-mapper')
 const earlReports = loadJson(`earl-reports/*.json`)
 
 // ACT Rules testcases (eg: see - https://act-rules.github.io/testcases.json)
-const testcases = loadJson('https://act-rules.github.io/testcases.json')
+const [testcases] = loadJson('https://act-rules.github.io/testcases.json')
 
 actMapGenerator(earlReports, testcases, {
   organisation: `MyOrg`,

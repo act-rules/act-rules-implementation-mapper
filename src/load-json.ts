@@ -6,10 +6,11 @@ import fs from 'fs'
 
 const readFile = promisify(fs.readFile)
 
-export async function loadJson(filePath: string): Promise<object> {
+export async function loadJson(filePath: string): Promise<object[]> {
   if (/^https?:\/\//.test(filePath)) {
     debug('load:request')(`fetching ${filePath}`)
-    return await request({ uri: filePath, json: true })
+    const data = await request({ uri: filePath, json: true })
+    return [data]
   } else {
     const filePaths = await globby(filePath)
     const sources: string[] = await Promise.all(

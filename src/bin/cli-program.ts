@@ -38,7 +38,7 @@ export async function cliProgram(
     )
   ).filter(report => report)
 
-  const testcaseFile = (await loadJson(testcases)) as TestCaseJson
+  const [testcaseFile] = (await loadJson(testcases)) as [TestCaseJson]
 
   log('Loading files')
   const implementationMapping = await actMapGenerator(jsonldFiles, testcaseFile, meta)
