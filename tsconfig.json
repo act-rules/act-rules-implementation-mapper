@@ -1,21 +1,22 @@
 {
-	"compilerOptions": {
-		"lib": ["es2015", "es2017"],
-		"types": ["jest", "node"],
-		"module": "commonjs",
-		"moduleResolution": "node",
-		"typeRoots": ["nodes_modules/@types"],
-		"target": "es2017",
-		"noImplicitReturns": true,
-		"esModuleInterop": true,
-		"resolveJsonModule": true,
-		"noFallthroughCasesInSwitch": true,
-		"pretty": true,
-		"strict": true,
-		"sourceMap": true,
-		"outDir": "./dist",
-		"declaration": false,
-		"noImplicitAny": true
-	},
-	"exclude": ["src/**/*.test.ts", "__tests__/**/*.ts", "src/__test-utils.ts"]
+  "compilerOptions": {
+    "lib": ["es2015", "es2017"],
+    "types": ["jest", "node"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "typeRoots": ["nodes_modules/@types"],
+    "target": "es2017",
+    "noImplicitReturns": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "noFallthroughCasesInSwitch": true,
+    "pretty": true,
+    "strict": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "declaration": false,
+    "noImplicitAny": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.json"],
+  "exclude": ["src/**/*.test.ts", "__tests__/**/*.ts", "src/__test-utils.ts"]
 }
