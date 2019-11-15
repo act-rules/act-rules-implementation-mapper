@@ -32,7 +32,4 @@ node_modules/
 # Data
 _data/
 
-# Ignore package-lock.json
-package-lock.json
-
 dist
