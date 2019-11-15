@@ -35,4 +35,6 @@ _data/
 # Ignore package-lock.json
 package-lock.json
 
-dist
+# Dist
+dist/**/*.*
+!dist/bin/act-map-generator-cli.js
