@@ -10,7 +10,7 @@
     "test": "jest --coverage && npm run lint",
     "test:watch": "jest --watch",
     "start": "npm run build:live",
-    "postinstall": "npm run build ",
+    "prepare": "npm run build",
     "build": "tsc",
     "build:live": "nodemon --watch 'src/**/*.ts'",
     "lint": "eslint src/**/*.ts",
