@@ -3,9 +3,6 @@
   "version": "2.0.0",
   "description": "Mapper for condensing ACT Rules Implementations to be a consumable data for ACT Rules Website",
   "main": "./dist/act-map-generator.js",
-  "bin": {
-    "act-map-generator": "./dist/bin/act-map-generator-cli.js"
-  },
   "scripts": {
     "test": "jest --coverage && npm run lint",
     "test:watch": "jest --watch",
