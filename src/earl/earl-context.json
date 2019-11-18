@@ -25,6 +25,9 @@
 		"test": {
 			"@id": "earl:test"
 		},
+		"wcagem-test": {
+			"@id": "http://www.w3.org/TR/WCAG-EM/#testcase"
+		},
 		"outcome": {
 			"@id": "earl:outcome",
 			"@type": "@vocab"
@@ -93,6 +96,5 @@
 		"reference": {
 			"@id": "ptr:reference"
 		}
-	},
-	"@type": "earl:Assertion"
+	}
 }
