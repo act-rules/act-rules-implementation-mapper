@@ -8,27 +8,27 @@ describe('ruleIdFromUri', () => {
 
   it('throws if the rule ID is too short', () => {
     const uri = '/59a7/55f3ed0ec0f324514a0d223b737bc1e4c81593c7.html'
-    expect(() => ruleIdFromUri(uri)).toThrow()
+    expect(ruleIdFromUri(uri)).toBeUndefined()
   })
 
   it('throws if the rule ID is too long', () => {
     const uri = '/5f99a73sd/55f3ed0ec0f324514a0d223b737bc1e4c81593c7.html'
-    expect(() => ruleIdFromUri(uri)).toThrow()
+    expect(ruleIdFromUri(uri)).toBeUndefined()
   })
 
   it('throws if the testcase ID is too short', () => {
     const uri = '/5f99a7/55f3ed0ec0f324514a0d223b737bc1e4c81593c.html'
-    expect(() => ruleIdFromUri(uri)).toThrow()
+    expect(ruleIdFromUri(uri)).toBeUndefined()
   })
 
   it('throws if the testcase ID is too long', () => {
     const uri = '/5f99a7/55f3ed0ec0f324514a0d223b737bc1e4c81593c77.html'
-    expect(() => ruleIdFromUri(uri)).toThrow()
+    expect(ruleIdFromUri(uri)).toBeUndefined()
   })
 
   it('throws if there is no extension', () => {
     const uri = '/5f99a7/55f3ed0ec0f324514a0d223b737bc1e4c81593c7.'
-    expect(() => ruleIdFromUri(uri)).toThrow()
+    expect(ruleIdFromUri(uri)).toBeUndefined()
   })
 })
 
@@ -52,11 +52,11 @@ describe('ruleIdFromSubject', () => {
   })
 
   it('throws if the URI has no rule ID', () => {
-    expect(() =>
+    expect(
       ruleIdFromSubject({
         '@type': 'earl:TestSubject',
         source: 'foobar',
       })
-    ).toThrow()
+    ).toBeUndefined()
   })
 })
