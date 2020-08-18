@@ -18,7 +18,8 @@
     "prettier": "npm run prettier:write",
     "prettier:base": "prettier --parser typescript --single-quote",
     "prettier:check": "npm run prettier:base -- --list-different \"src/**/*.ts\"",
-    "prettier:write": "npm run prettier:base -- --write \"src/**/*.ts\""
+    "prettier:write": "npm run prettier:base -- --write \"src/**/*.ts\"",
+    "tmp": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -34,7 +35,7 @@
     "@types/debug": "^4.1.5",
     "@types/jest": "24.0.0",
     "@types/jsonld": "^1.5.0",
-    "@types/node": "*",
+    "@types/node": ">=4.2.0 < 13",
     "@types/request-promise": "^4.1.44",
     "@types/yargs": "^13.0.3",
     "debug": "^4.1.1",
