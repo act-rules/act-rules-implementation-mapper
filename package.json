@@ -18,8 +18,7 @@
     "prettier": "npm run prettier:write",
     "prettier:base": "prettier --parser typescript --single-quote",
     "prettier:check": "npm run prettier:base -- --list-different \"src/**/*.ts\"",
-    "prettier:write": "npm run prettier:base -- --write \"src/**/*.ts\"",
-    "tmp": "node index.js"
+    "prettier:write": "npm run prettier:base -- --write \"src/**/*.ts\""
   },
   "repository": {
     "type": "git",
