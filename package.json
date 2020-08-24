@@ -34,7 +34,7 @@
     "@types/debug": "^4.1.5",
     "@types/jest": "24.0.0",
     "@types/jsonld": "^1.5.0",
-    "@types/node": "*",
+    "@types/node": ">=4.2.0 < 13",
     "@types/request-promise": "^4.1.44",
     "@types/yargs": "^13.0.3",
     "debug": "^4.1.1",
